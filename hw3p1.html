@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a webpage that takes in various components of a student's grade and calculates the final grade percentage and equivalent letter grade.">
+
+    <title>Homework 3 Part 1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        function gradeConverter(percent) {
+            if (percent >= 90)
+                return "A";
+            else if (percent >= 80)
+                return "B";
+            else if (percent >= 70)
+                return "C";
+            else if (percent >= 60)
+                return "D";
+            else
+                return "F";
+        }
+
+        function calcGrade(submitEvent) {
+            submitEvent.preventDefault();
+
+            const hwAvg = parseInt(document.getElementById("hwAvg").value);
+            const midExam = parseInt(document.getElementById("midExam").value);
+            const finalExam = parseInt(document.getElementById("finalExam").value);
+            const partcptn = parseInt(document.getElementById("partcptn").value);
+            const result =  document.getElementById("result");
+
+            if (Number.isFinite(hwAvg) &&
+                Number.isFinite(midExam) &&
+                Number.isFinite(finalExam) &&
+                Number.isFinite(partcptn) &&
+                hwAvg >= 0 && hwAvg <= 100 &&
+                midExam >= 0 && midExam <= 100 &&
+                finalExam >= 0 && finalExam <= 100 &&
+                partcptn >= 0 && partcptn <= 100
+            ) {
+                const finalPercent =  Math.round( (.5 * hwAvg) + (.2 * midExam) + (.2 * finalExam) + (.1 * partcptn) );
+                const finalGrade = gradeConverter(finalPercent);
+                let retake = "";
+                if (finalGrade === 'D' || finalGrade === 'F')
+                    retake = "\nStudent must retake the course";
+
+                result.textContent = `Final Grade: ${finalPercent} (${finalGrade})${retake}`;
+
+            }
+            else {
+                result.textContent = "Invalid input - please ensure that all fields are completed and values are between 0 to 100."
+            }
+        }
+
+        function clearForm(resetEvent) {
+            document.getElementById("result").textContent = "";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("grade-form");
+            form.addEventListener("submit", calcGrade);
+            form.addEventListener("reset", clearForm);
+        });
+    </script>
+</head>
+<body>
+    <h1>Student Grades</h1>
+
+    <form class="hw3" id="grade-form">
+        <label for="hwAvg">Homework Average</label>
+        <input type="number" id="hwAvg" name="hwAvg">
+
+        <label for="midExam">Mid-Term Exam Score</label>
+        <input type="number" id="midExam" name="midExam">
+
+        <label for="finalExam">Final Exam Score</label>
+        <input type="number" id="finalExam" name="finalExam">
+
+        <label for="partcptn">Participation</label>
+        <input type="number" id="partcptn" name="partcptn">
+
+        <div class="button-row">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
+    <p class="hw3" id="result"></p>
+
+    <p><a href="hw3.html">Return to Homework 3 main page</a></p>
+</body>
+</html>
