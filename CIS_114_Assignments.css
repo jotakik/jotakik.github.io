@@ -1,0 +1,72 @@
+:root {
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Bree Serif', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+}
+
+.nonexistent_pages {
+    color: gray;
+}
+
+#grade-form.hw3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    max-width: 400px;
+}
+
+#grade-form.hw3 .button-row {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    margin-top: 1rem;
+}
+
+#grade-form.hw3 button {
+    flex: 1;
+    max-width: 150px;
+}
+
+#result.hw3 {
+  white-space: pre-line;
+  font-weight: bold;
+}
+
+.hw3 .item-row {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.hw3 .item-row label {
+    display: inline-block;
+    width: 60px;
+    margin-right: 10px;
+}
+
+.hw3 .item-row input {
+    width: 130px;
+}
+
+#seller-form.hw3 {
+    margin-bottom: 20px;
+}
