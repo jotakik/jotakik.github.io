@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=
+        "This is a webpage that calculates the products and sums \
+        of every fourth integer from 5 to 25 inclusive and \
+        of every third integer from 3 to 18 inclusive.">
+
+    <title>Homework 4 Part 1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Using for loop
+
+            const prefix = "The result of ";
+            let prodStr = prefix, sumStr = prefix;
+            let prod = 1, sum = 0;
+            let i = 5;
+
+            for (; i < 25; i += 4) {
+                prodStr += i.toLocaleString() + " * ";
+                sumStr += i.toLocaleString() + " + ";
+
+                prod *= i;
+                sum += i;
+            }
+
+            prod *= i;
+            sum += i;
+
+            prodStr += i.toLocaleString() + " = " + prod.toLocaleString();
+            sumStr += i.toLocaleString() + " = "  + sum.toLocaleString();
+
+            document.getElementById("fourth-int").textContent = prodStr + "\n" + sumStr;
+
+            // Using do-while loop
+
+            i = 3;
+            prod = i, sum = i;
+            prodStr = prefix + i.toLocaleString(); sumStr = prefix + i.toLocaleString();
+
+            do {
+                i += 3;
+
+                prod *= i;
+                sum += i;
+
+                prodStr += " * " + i.toLocaleString();
+                sumStr += " + " + i.toLocaleString();
+            } while (i < 18)
+
+            prodStr += " = " + prod.toLocaleString();
+            sumStr += " = " + sum.toLocaleString();
+
+            document.getElementById("third-int").textContent = prodStr + "\n" + sumStr;
+        });
+    </script>
+</head>
+<body>
+    <h1>Product and Sum</h1>
+
+    <p class="hw4" id="fourth-int"></p>
+
+    <p class="hw4" id="third-int"></p>
+
+    <p><a href="hw4.html">Return to Homework 4 main page</a></p>
+</body>
+</html>

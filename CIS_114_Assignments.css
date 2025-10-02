@@ -26,6 +26,8 @@ h1, h2, h3, h4, h5, h6 {
     color: gray;
 }
 
+/* Homework 3 Styling */
+
 #grade-form.hw3 {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -69,4 +71,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #seller-form.hw3 {
     margin-bottom: 20px;
+}
+
+/* Homework 4 Styling */
+
+#fourth-int.hw4, #third-int.hw4 {
+    white-space: pre;
 }
