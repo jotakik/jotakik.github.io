@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=
+        "This is a webpage with the fives through nines multiplication tables.">
+
+    <title>Homework 4 Part 1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const firstMultiplier = 5, lastMultiplier = 9;
+            const firstNumber = 1, lastNumber = 9;
+
+            let tableStr = "";
+            
+            for (let i = firstMultiplier; i <= lastMultiplier; i++) {
+                tableStr += `<h2>${i}s Multiplication Table</h2>`;
+
+                tableStr += "<table class='hw4'>";
+                tableStr += 
+                    `<thead> <tr>
+                        <th>Number</th> <th>Multiplier</th> <th>Result</th>
+                    </tr> </thead>`;
+
+                tableStr += "<tbody>";
+
+                for (let j = firstNumber; j <= lastNumber; j++) {
+                    tableStr += 
+                        `<tr>
+                            <td>${j}</td> <td>${i}</td> <td>${i*j}</td>
+                        </tr>`;
+                }
+
+                tableStr += "</tbody>";
+                tableStr += "</table>";
+            }
+
+            document.getElementById("tables").innerHTML = tableStr;
+        });
+    </script>
+</head>
+<body>
+    <h1>Learn Multiplication</h1>
+
+    <p class="hw4" id="tables"></p>
+
+    <p><a href="hw4.html">Return to Homework 4 main page</a></p>
+</body>
+</html>
