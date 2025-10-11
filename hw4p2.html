@@ -22,9 +22,9 @@
             let tableStr = "";
             
             for (let i = firstMultiplier; i <= lastMultiplier; i++) {
-                tableStr += `<h2>${i}s Multiplication Table</h2>`;
-
                 tableStr += "<table class='hw4'>";
+                tableStr += `<caption>${i}s Multiplication Table</caption>`;
+
                 tableStr += 
                     `<thead> <tr>
                         <th>Number</th> <th>Multiplier</th> <th>Result</th>

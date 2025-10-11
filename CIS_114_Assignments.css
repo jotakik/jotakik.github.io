@@ -85,6 +85,10 @@ table.hw4 {
     border-collapse: collapse;
 }
 
+.hw4 caption {
+    font-family: 'Bree Serif', serif;
+}
+
 .hw4 th, .hw4 td {
     border: 1px dashed black;
     border-collapse: collapse;
