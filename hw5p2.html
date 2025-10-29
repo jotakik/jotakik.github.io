@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=
+        "This is a webpage that shows data about several states \
+        based on the July 2024 census.">
+
+    <title>Homework 5 Part 2</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        function getCensusData(submitEvent) {
+            submitEvent.preventDefault();
+
+            const censusData = [
+                ["AL", "Alabama", "Montgomery", "5,157,699"],
+                ["AK", "Alaska", "Juneau", "740,133"],
+                ["AZ", "Arizona", "Phoenix", "7,582,384"],
+                ["AR", "Arkansas", "Little Rock", "3,088,354"],
+                ["CA", "California", "Sacramento", "39,431,263"],
+                ["CO", "Colorado", "Denver", "5,957,493"]
+            ]
+
+            const input = document.getElementById("state").value.trim().toLowerCase();
+
+            let stateExists = false;
+            for(let stateRow of censusData) {
+                if (input === stateRow[0].toLowerCase() || input === stateRow[1].toLowerCase()) {
+                    stateExists = true;
+
+                    document.getElementById("results").value = 
+                        "Thanks for your inquiry, here is the information you requested:" +
+                        "\nState abbr = " + stateRow[0] +
+                        "\nState name = " + stateRow[1] +
+                        "\nCapital = " + stateRow[2] +
+                        "\nPopulation = " + stateRow[3];
+                    
+                    break;
+                }
+            }
+
+            if (!stateExists) {
+                const validStates = censusData.map(state => state[1]).join(", ");
+                document.getElementById("results").value =
+                    "Sorry, we do not have information about this state!\n" +
+                    "We only have information about " + validStates;
+            }
+        }
+
+        function clearOutput() {
+            document.getElementById("results").value = "";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("censusQuery");
+            form.addEventListener("submit", getCensusData);
+            form.addEventListener("reset", clearOutput);
+        });
+    </script>
+</head>
+<body>
+    <h1>Census Data</h1>
+
+    <form id="censusQuery" class="hw5p2">
+        <div>
+            <label for="state">
+                Please enter the full name or two-letter abbreviation of the state:
+            </label>
+            <br>
+            <input type="text" id="state" name="state" required>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset">Clear</button>
+        </div>
+        
+        <div>
+            <label for="results">Output</label>
+            <br>
+            <textarea id="results" name="results" rows="5" cols="70" readonly></textarea>
+        </div>
+    </form>
+
+    <p><a href="hw5.html">Return to Homework 5 main page</a></p>
+</body>
+</html>

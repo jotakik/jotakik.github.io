@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=
+        "This is a webpage that records information about a user, \
+        including name, age, browser used, and preferred movie genre.">
+
+    <title>Homework 5 Part 1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        function clearError() {
+            document.getElementById("result").textContent = "";
+        }
+
+        function validateData(submitEvent) {
+            submitEvent.preventDefault();
+
+            let errorMsg = "";
+
+            const invalidName = () => {
+                const fullName = document.getElementById("full-name").value.trim();
+                return fullName === "";
+            };
+
+            const invalidAgeGroup = () => {
+                const age = document.querySelector("input[name='age']:checked");
+                return age === null;
+            };
+
+            const invalidBrowsers = () => {
+                const browser = document.querySelector("input[name='browser']:checked");
+                return browser === null;
+            };
+
+            const invalidMovieGenre = () => {
+                const genre = document.getElementById("movie-genre").value;
+                return genre === "";
+            };
+
+            if (invalidName()) {
+                errorMsg += "Error: please enter your full name.\n";
+            }
+
+            if (invalidAgeGroup()) {
+                errorMsg += "Error: please select your age group.\n";
+            }
+
+            if (invalidBrowsers()) {
+                errorMsg += "Error: Please select the browser(s) you have used before.\n";
+            }
+
+            if (invalidMovieGenre()) {
+                errorMsg += "Error: Please select a movie genre.";
+            }
+
+            if (errorMsg === "") {
+                document.getElementById("result").textContent =
+                    "Thanks, your data was submitted!";
+            }
+            else {
+                document.getElementById("result").textContent = errorMsg;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const dataForm = document.getElementById("dataForm");
+            dataForm.addEventListener("submit", validateData);
+            dataForm.addEventListener("reset", clearError);
+        });
+    </script>
+</head>
+<body>
+    <h1>Data Collection</h1>
+
+    <form class="hw5p1" id="dataForm">
+        <div>
+            <label for="full-name">Full Name</label><br>
+            <input type="text" id="full-name" name="full-name" required>
+        </div>
+
+        <div>
+            <fieldset class="hw5p1">
+                <legend>Age Group</legend>
+
+                <input type="radio" id="young" name="age" value="less than 21" required>
+                <label for="young">less than 21</label>
+
+                <input type="radio" id="mid" name="age" value="between 21 and 50">
+                <label for="mid">between 21 and 50</label>
+
+                <input type="radio" id="old" name="age" value="older than 50">
+                <label for="old">older than 50</label>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset class="hw5p1">
+                <legend>Browser(s) Used</legend>
+                
+                <input type="checkbox" id="firefox" name="browser" value="Firefox">
+                <label for="firefox">Firefox</label>
+
+                <input type="checkbox" id="edge" name="browser" value="Edge">
+                <label for="edge">Edge</label>
+
+                <input type="checkbox" id="chrome" name="browser" value="Chrome">
+                <label for="chrome">Chrome</label>
+
+                <input type="checkbox" id="safari" name="browser" value="Safari">
+                <label for="safari">Safari</label>
+            </fieldset>
+        </div>
+
+        <div>
+            <label for="movie-genre">Preferred Movie Genre</label><br>
+            <select id="movie-genre" required>
+                <option value="" selected disabled>Please select an option</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Documentary">Documentary</option>
+                <option value="Science Fiction">Science Fiction</option>
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <p id="result" class="hw5p1"></p>
+    
+    <p><a href="hw5.html">Return to Homework 5 main page</a></p>
+</body>
+</html>
