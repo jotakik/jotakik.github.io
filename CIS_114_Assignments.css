@@ -127,3 +127,25 @@ form.hw5p1 div {
 form.hw5p2 div {
     margin-bottom: 1em;
 }
+
+/* Homework 6 Styling */
+
+.hw6p1 label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.hw6p1 div {
+    margin-bottom: 15px;
+}
+
+.hw6p2 label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.hw6p2 div {
+    margin-bottom: 15px;
+}

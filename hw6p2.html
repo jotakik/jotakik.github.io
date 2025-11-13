@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=
+        "This is a webpage that counts the occurrences of a character \
+        in the content that a user types.">
+
+    <title>Homework 6 Part 2</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        function searchChar(submitEvent) {
+            submitEvent.preventDefault();
+
+            const longContent = document.getElementById("long-content").value.toLowerCase();
+            const singleChar = document.getElementById("single-char").value;
+            const singleCharLower = singleChar.toLowerCase();
+            let count = 0;
+
+            for (let char of longContent) {
+                count += char === singleCharLower;
+            }
+
+            const resultsElement = document.getElementById("results");
+            if (count > 0) {
+                resultsElement.value =
+                    "Search character '" + singleChar + "' showed up " +
+                    count + " times in the content you typed."
+            }
+            else {
+                resultsElement.value = "";
+
+                let popup = window.open("hw6p2_popup.html", "charNotFound", "width=300,height=100");
+                popup.focus();
+
+                popup.onload = function() {
+                    popup.document.getElementById("not-found-msg").textContent = 
+                        "Search character '" + singleChar + "' not found in the content you typed.";
+                };
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("character-form");
+            form.addEventListener("submit", searchChar);
+        });
+    </script>
+</head>
+<body>
+    <h1>Character Search</h1>
+
+    <form class="hw6p2" id="character-form">
+        <div>
+            <label for="long-content">Please type in the textarea:</label>
+            <textarea id="long-content" name="long-content" rows="10" cols="100" required></textarea>
+        </div>
+
+        <div>
+            <label for="single-char">Please type a single letter to search for:</label>
+            <input type="text" maxlength="1" id="single-char" name="single-char" required>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+
+        <div>
+            <label for="results">Output</label>
+            <textarea id="results" name="results" rows="3" cols="70" readonly></textarea>
+        </div>
+    </form>
+
+    <p><a href="hw6.html">Return to Homework 6 main page</a></p>
+</body>
+</html>

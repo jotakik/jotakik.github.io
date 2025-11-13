@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=
+        "This is a webpage that performs mathematical operations like rounding \
+        and square root on floating point numbers.">
+
+    <title>Homework 6 Part 1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        function validDecimal(decimalStr) {
+            const parts = decimalStr.split(".");
+            return parts.length === 2 && parts[1].length >= 4;
+        }
+
+        function processDecimal(submitEvent) {
+            submitEvent.preventDefault();
+            const decimalStr = document.getElementById("decimal-num").value;
+
+            if (validDecimal(decimalStr)) {
+                const decimalNum = parseFloat(decimalStr);
+
+                const nearestInt = Math.round(decimalNum);
+                const sqrtInt = Math.round(Math.sqrt(decimalNum));
+
+                document.getElementById("results").value =
+                    "You typed number: " + decimalStr +
+                    "\nRounded to the nearest integer = " + nearestInt +
+                    "\nSquare root rounded to integer = " + sqrtInt +
+                    "\nRounded to the nearest 10th position = " + decimalNum.toFixed(1) +
+                    "\nRounded to the nearest 100th position = " + decimalNum.toFixed(2) +
+                    "\nRounded to the nearest 1000th position = " + decimalNum.toFixed(3);
+            }
+            else {
+                document.getElementById("results").value =
+                    "You need to type a number with at least 4 decimals, please try again";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("decimal-form");
+            form.addEventListener("submit", processDecimal);
+        });
+    </script>
+</head>
+<body>
+    <h1>Decimal Operations</h1>
+
+    <form class="hw6p1" id="decimal-form">
+        <div>
+            <label for="decimal-num">Please enter a number with 4 decimals:</label>
+            <input type="number" step="any" id="decimal-num" name="decimal-num" required>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+        
+        <div>
+            <label for="results">Output</label>
+            <textarea id="results" name="results" rows="6" cols="100" readonly></textarea>
+        </div>
+    </form>
+
+    <p><a href="hw6.html">Return to Homework 6 main page</a></p>
+</body>
+</html>
