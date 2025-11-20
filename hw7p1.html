@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <title>Homework 7 Part 1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        function changeBackground(event) {
+            const text = document.getElementById("text-content");
+            const color = event.target.value;
+            
+            text.classList.remove("beige", "light-grey");
+            text.classList.add(color);
+        }
+
+        function changeFontSize(event) {
+            const text = document.getElementById("text-content");
+            const fontSize = event.target.value;
+
+            text.classList.remove("rem-5", "rem-10", "rem-15");
+            if (fontSize !== "default") {
+                text.classList.add(fontSize);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const text = document.getElementById("text-content");
+
+            // radios
+            const beige = document.getElementById("beige");
+            const lightGrey = document.getElementById("light-grey");
+
+            beige.addEventListener("change", changeBackground);
+            lightGrey.addEventListener("change", changeBackground);
+
+            // checkboxes
+            const underline = document.getElementById("underline");
+            const bold = document.getElementById("bold");
+            const italic = document.getElementById("italic");
+
+            underline.addEventListener("change", (e) => {
+                text.classList.toggle("underline", e.target.checked);
+            });
+            bold.addEventListener("change", (e) => {
+                text.classList.toggle("bold", e.target.checked);
+            });
+            italic.addEventListener("change", (e) => {
+                text.classList.toggle("italic", e.target.checked);
+            });
+
+            // dropdown
+            const fontSize = document.getElementById("font-size");
+
+            fontSize.addEventListener("change", changeFontSize);
+        });
+    </script>
+</head>
+<body>
+    <h1>Customize Styles</h1>
+
+    <main>
+        <h2>Quotes from C.S. Lewis</h2>
+
+        <div id="text-content">
+            <p>
+                "To love at all is to be vulnerable. Love anything and your heart will be wrung 
+                and possibly broken. If you want to make sure of keeping it intact you must give 
+                it to no one, not even an animal. Wrap it carefully round with hobbies and little luxuries; 
+                avoid all entanglements. Lock it up safe in the casket or coffin of your selfishness. 
+                But in that casket, safe, dark, motionless, airless, it will change. It will not be broken; 
+                it will become unbreakable, impenetrable, irredeemable. To love is to be vulnerable."
+            </p>
+
+            <p>
+                "If we find ourselves with a desire that nothing in this world can satisfy, 
+                the most probable explanation is that we were made for another world."
+            </p>
+
+            <p>
+                "Imagine yourself as a living house. God comes in to rebuild that house. 
+                At first, perhaps, you can understand what He is doing. He is getting the drains right 
+                and stopping the leaks in the roof and so on; you knew that those jobs needed doing and 
+                so you are not surprised. But presently He starts knocking the house about in a way that 
+                hurts abominably and does not seem to make any sense. What on earth is He up to? 
+                The explanation is that He is building quite a different house from the one you thought of - 
+                throwing out a new wing here, putting on an extra floor there, running up towers, making courtyards. 
+                You thought you were being made into a decent little cottage: but He is building a palace. 
+                He intends to come and live in it Himself."
+            </p>
+
+            <p>
+                "It would seem that Our Lord finds our desires not too strong, but too weak. We are half-hearted 
+                creatures, fooling about with drink and sex and ambition when infinite joy is offered us, 
+                like an ignorant child who wants to go on making mud pies in a slum because he cannot imagine what 
+                is meant by the offer of a holiday at the sea. We are far too easily pleased."
+            </p>
+        </div>
+    </main>
+
+    <form class="hw7p1" id="style-choices">
+        <div>
+            <fieldset class="hw7p1">
+                <legend>Background Color</legend>
+
+                <input type="radio" id="beige" name="background" value="beige">
+                <label for="beige">beige background</label>
+
+                <input type="radio" id="light-grey" name="background" value="light-grey">
+                <label for="light-grey">light grey background</label>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset class="hw7p1">
+                <legend>Font Emphasis</legend>
+
+                <input type="checkbox" id="underline" name="emphasis" value="underline">
+                <label for="underline">underline</label>
+
+                <input type="checkbox" id="bold" name="emphasis" value="bold">
+                <label for="bold">bold</label>
+
+                <input type="checkbox" id="italic" name="emphasis" value="italic">
+                <label for="italic">italic</label>
+            </fieldset>
+        </div>
+
+        <div>
+            <label for="font-size">Font Size</label>
+            <select id="font-size">
+                <option value="default" selected>Default</option>
+                <option value="rem-5">5 rem</option>
+                <option value="rem-10">10 rem</option>
+                <option value="rem-15">15 rem</option>
+            </select>
+        </div>
+    </form>
+
+    <p><a href="hw7.html">Return to Homework 7 main page</a></p>
+</body>
+</html>
