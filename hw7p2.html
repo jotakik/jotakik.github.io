@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=
+        "This is a webpage that records a user's name and username, stores them in cookies, \
+        and displays them whenever the user visits the webpage, provided the user does not close \
+        the browser session.">
+
+    <title>Homework 7 Part 2</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CIS_114_Assignments.css">
+
+    <script>
+        function createCookie() {
+            let cookieArr = []
+            cookieArr.push(["name", document.getElementById("real-name").value]);
+            cookieArr.push(["username", document.getElementById("username").value]);
+
+            for (const c of cookieArr) {
+                const [cName, cValue] = c;
+                document.cookie = cName + "=" + encodeURIComponent(cValue);
+            }
+        }
+
+        function getCookies() {
+            const cookieDict = {};
+
+            const cookies = document.cookie.split(';');
+            for (let c of cookies) {
+                c = c.trim();
+                const[cName, cEncodedValue] = c.split('=');
+                cookieDict[cName] = decodeURIComponent(cEncodedValue);
+            }
+
+            return cookieDict;
+        }
+
+        function checkCookies() {
+            const cookieDict = getCookies();
+            if ("name" in cookieDict && "username" in cookieDict) {
+                const content = document.getElementById("content");
+                content.textContent = "Hello " + cookieDict["name"] + 
+                    "! Your username is " + cookieDict["username"];
+                return true;
+            }
+            return false;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (!checkCookies()) {
+                const form = document.getElementById("get-details");
+                form.addEventListener("submit", createCookie);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Setting Cookies</h1>
+
+    <div id="content" class="hw7p2">
+        <form id="get-details">
+            <div>
+                <label for="real-name">Name:</label>
+                <input type="text" id="real-name" name="real-name" required>
+            </div>
+
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div>
+                <button type="submit">Set Cookies</button>
+            </div>
+        </form>
+    </div>
+    
+    <p><a href="hw7.html">Return to Homework 7 main page</a></p>
+</body>
+</html>

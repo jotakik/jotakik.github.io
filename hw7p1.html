@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content=
+        "This is a webpage containing text content whose background, typographical emphasis, \
+        and font size can be customized.">
 
     <title>Homework 7 Part 1</title>
 
@@ -16,17 +18,19 @@
     <script>
         function changeBackground(event) {
             const text = document.getElementById("text-content");
+            const colors = ["beige", "light-grey"]
             const color = event.target.value;
             
-            text.classList.remove("beige", "light-grey");
+            text.classList.remove(...colors);
             text.classList.add(color);
         }
 
         function changeFontSize(event) {
             const text = document.getElementById("text-content");
+            const sizes = ["small-fontsize", "med-fontsize", "big-fontsize"]
             const fontSize = event.target.value;
 
-            text.classList.remove("rem-5", "rem-10", "rem-15");
+            text.classList.remove(...sizes);
             if (fontSize !== "default") {
                 text.classList.add(fontSize);
             }
@@ -65,9 +69,9 @@
     </script>
 </head>
 <body>
-    <h1>Customize Styles</h1>
+    <h1>Style Customization</h1>
 
-    <main>
+    <main id="text-with-header" class="hw7p1">
         <h2>Quotes from C.S. Lewis</h2>
 
         <div id="text-content">
@@ -137,10 +141,10 @@
         <div>
             <label for="font-size">Font Size</label>
             <select id="font-size">
+                <option value="small-fontsize">0.75 rem</option>
                 <option value="default" selected>Default</option>
-                <option value="rem-5">5 rem</option>
-                <option value="rem-10">10 rem</option>
-                <option value="rem-15">15 rem</option>
+                <option value="med-fontsize">1.25 rem</option>
+                <option value="big-fontsize">1.5 rem</option>
             </select>
         </div>
     </form>

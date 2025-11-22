@@ -120,10 +120,6 @@ form.hw5p1 div {
     margin-bottom: 1em;
 }
 
-form.hw5p1 div {
-    margin-bottom: 1em;
-}
-
 form.hw5p2 div {
     margin-bottom: 1em;
 }
@@ -152,34 +148,75 @@ form.hw5p2 div {
 
 /* Homework 7 Styling */
 
-.beige {
+.hw7p1 label[for="beige"], .beige {
     background-color: beige;
 }
 
-.light-grey {
+.hw7p1 label[for="light-grey"], .light-grey {
     background-color: lightgrey;
 }
 
-.underline {
+.hw7p1 label[for="underline"], .underline {
     text-decoration: underline;
 }
 
-.bold {
+.hw7p1 label[for="bold"], .bold {
     font-weight: bold;
 }
 
-.italic {
+.hw7p1 label[for="italic"], .italic {
     font-style: italic;
 }
 
-.rem-5 {
-    font-size: 5rem;
+.small-fontsize {
+    font-size: 0.75rem;
 }
 
-.rem-10 {
-    font-size: 10rem;
+.med-fontsize {
+    font-size: 1.25rem;
 }
 
-.rem-15 {
-    font-size: 15rem;
+.big-fontsize {
+    font-size: 1.5rem;
+}
+
+fieldset.hw7p1 {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hw7p1 div {
+    margin: 5px;
+}
+
+#text-with-header.hw7p1 {
+    border: 1px solid black;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+main.hw7p1 {
+    margin: 15px;
+    margin-bottom: 30px;
+}
+
+.hw7p1 legend, .hw7p1 label[for="font-size"] {
+    font-weight: bold;
+}
+
+.hw7p1 #font-size {
+    display: block;
+}
+
+#style-choices.hw7p1 {
+    margin-bottom: 40px;
+}
+
+.hw7p2 div {
+    margin: 5px;
+}
+
+#content.hw7p2 {
+    margin-bottom: 40px;
 }
